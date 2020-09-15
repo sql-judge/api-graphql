@@ -1,0 +1,39 @@
+type User {
+    id: ID!
+    username: String!
+    full_name: String
+}
+
+type Tag {
+    id: ID!
+    name: String!
+    hex_color: String!
+}
+
+type Problem {
+    id: ID!
+    title: String!
+    description: String!
+    accepted_ratio: Float!
+    tags: [Tag!]!
+    authors: [User!]!
+}
+
+type Submission {
+    id: ID!
+    problem: Problem!
+    created_at: String!
+    status: String!
+    checker_message: String
+}
+
+type Query {
+    problem(id: ID!): Problem!
+    problems: [Problem!]!
+    submissions: [Submission!]!
+    user(id: ID!): User!
+}
+
+type Mutation {
+    submitSolution(problem_id: ID!, solution: String!): Submission
+}

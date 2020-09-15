@@ -1,0 +1,25 @@
+---
+logger:
+  level: debug
+  encoding: json
+  outputPaths:
+    - stdout
+    - "/tmp/sqljudge_api.log"
+  errorOutputPaths:
+    - stderr
+    - "/tmp/sqljudge_api_error.log"
+  encoderConfig:
+    messageKey: message
+    levelKey: level
+    timeKey: timestamp
+    levelEncoder: lowercase
+    timeEncoder: rfc3339nano
+database:
+  host: localhost
+  port: '5432'
+  username: judge
+  password: judge
+  database: judge
+server:
+  host: 'localhost'
+  port: '8080'
